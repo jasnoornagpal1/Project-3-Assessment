@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body style="text-align:center;">
+{% block content %}
+    
+    <h1 style="text-align:center;">Wacky Widgets</h1>
+    <h3 style="text-align:center;">No Widgets Exist</h3>
+    <hr style="width:100%;">
+
+    <!-- {% if object %}
+        <h4>Edit <span class="teal-text">{{object.description}}</span></h4>
+    {% else %}
+        <h4>Add Widget!</h4>
+    {% endif %} -->
+    
+    {% if widget_list|length == 0 %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+        <input type="submit" value="Add Widget!" class="btn">
+    </form>
+    {% else %}
+    <h3 style="text-align:center;">No Widgets Exist</h3>
+    {% endif %}
+    
+{% endblock %}
+</body>
+
+</html>
+
